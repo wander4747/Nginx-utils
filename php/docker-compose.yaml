@@ -1,0 +1,16 @@
+version: "3"
+services:
+  nginx:
+    container_name: my-nginx
+    image: nginx
+    ports:
+      - "8521:80"
+    links: 
+      - "php"
+    volumes:
+      - ./conf:/etc/nginx/conf.d/
+  php:
+    container_name: my-php
+    build: ./
+    volumes:
+      - ./src:/usr/share/nginx/html

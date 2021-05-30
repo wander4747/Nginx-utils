@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    app-go:
+        build: .
+        container_name: my-go
+        volumes:
+            - .:/go/src/
+    nginx-go:
+        container_name: my-nginx-go
+        image: nginx
+        ports:
+            - "8523:80"
+        volumes:
+            - ./conf:/etc/nginx/conf.d/
